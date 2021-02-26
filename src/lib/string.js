@@ -1,19 +1,11 @@
-// export function commaSeparatedToArray(text) {
-//   return (
-//     text
-//       // .charAt(0)
-//       // .toUpperCase()
-//       // .slice(1)
-//       .split(',')
-//       .map(item => item.trim())
-//       .sort()
-//   )
-// }
-
 export function commaSeparatedToArray(text) {
-  return text
-    .split(',')
-    .map(item => item.trim())
-    .map(item => item.toLowerCase().charAt(0).toUpperCase() + item.slice(1))
-    .sort()
+  return [
+    ...new Set(
+      text
+        .split(',')
+        .map(item => item.trim())
+        .map(item => item.slice(0, 1).toUpperCase() + item.slice(1))
+        .sort()
+    ),
+  ]
 }
